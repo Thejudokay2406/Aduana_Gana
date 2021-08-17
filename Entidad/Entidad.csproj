@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Entidad_Area.cs" />
     <Compile Include="Entidad_Empleados.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

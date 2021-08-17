@@ -39,7 +39,7 @@ namespace Aduana_Gana
                 //Evaluamos si  existen los Datos
                 if (Datos.Rows.Count == 0)
                 {
-                    MessageBox.Show("Acceso Denegado al Sistema, Usuario o Contraseña Incorrecto. Si el Problema Persiste Contacte al Area de Sistemas", "Leal Enterprise", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Acceso Denegado al Sistema, Usuario o Contraseña Incorrecto. Si el Problema Persiste Contacte al Area de Sistemas", "Aduana Gama", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {

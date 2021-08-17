@@ -12,62 +12,30 @@ using Negocio;
 
 namespace Aduana_Gana
 {
-    public partial class frmEmpleados : Form
+    public partial class frmArea : Form
     {
         // Variable con la cual se define si el procecimiento 
         // A realizar es Editar, Guardar, Buscar,Eliminar
         private bool Digitar = true;
         private string Campo = "Campo Obligatorio";
 
-        // ***************************************************** Variable para Captura el Empleado Logueado ****************************************************
-
-        public int Idempleado;
-
         // ***************************************************** Variable para Metodo SQL Guardar, Eliminar, Editar, Consultar *********************************
         public string Guardar, Editar, Consultar, Eliminar, Imprimir = "";
 
-        //Panel Datos Basicos
-        private string Idbodega, Nombre, Apellidos, Direccion, Telefono, Salario = "";
-
-        //
-        private string Personal_Cargo = "";
-
-        private void frmEmpleados_Load(object sender, EventArgs e)
-        {
-            this.CBArea.SelectedIndex = 0;
-            this.CBSexo.SelectedIndex = 0;
-            this.CBJefe.SelectedIndex = 0;
-
-
-            this.TBCodigo.Text = Campo;
-            this.TBNombre.Text = Campo;
-            this.TBApellidos.Text = Campo;
-
-            this.Botones();
-        }
-
-        public frmEmpleados()
+        public frmArea()
         {
             InitializeComponent();
         }
 
-
-        private void Limpiar_Datos()
+        private void frmArea_Load(object sender, EventArgs e)
         {
-            //Panel - Datos Basicos
+            this.Botones();
+        }
 
-            this.TBCodigo.Clear();
-            this.TBNombre.Clear();
-            this.TBApellidos.Clear();
-            this.TBDireccion.Clear();
-            this.TBTelefono.Clear();
-            this.TBSalario.Text = Campo;
-            this.CBArea.SelectedIndex = 0;
-            this.CBSexo.SelectedIndex = 0;
-            this.CBJefe.SelectedIndex = 0;
-
-            //Se realiza el FOCUS al panel y campo de texto iniciales
-            this.TBCodigo.Select();
+        private void Limpiar()
+        {
+            this.TBArea.Clear();
+            this.TBDescripcion.Clear();
         }
 
         private void Botones()
@@ -76,36 +44,6 @@ namespace Aduana_Gana
             {
                 this.btnGuardar.Enabled = true;
                 this.btnGuardar.Text = "Guardar";
-            }
-        }
-
-        private void Combobox_Sucurzal()
-        {
-            try
-            {
-                this.CBJefe.DataSource = fSucurzal.Lista(3);
-                this.CBJefe.ValueMember = "Codigo";
-                this.CBJefe.DisplayMember = "Sucursal";
-
-                this.CBArea.DataSource = fare.Lista(3);
-                this.CBArea.ValueMember = "Codigo";
-                this.CBArea.DisplayMember = "Sucursal";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message + ex.StackTrace);
-            }
-        }
-
-        private void Validacion()
-        {
-            if (CHPersonal.Checked)
-            {
-                this.Personal_Cargo = "1";
-            }
-            else
-            {
-                this.Personal_Cargo = "0";
             }
         }
 
@@ -130,17 +68,13 @@ namespace Aduana_Gana
 
                 // <<<<<<------ Panel Datos Basicos ------>>>>>
 
-                if (this.TBCodigo.Text == Campo)
+                if (this.TBArea.Text == Campo)
                 {
-                    MensajeError("Ingrese el Codigo del Empleado a Registrar");
+                    MensajeError("Ingrese el Codigo del Area a Registrar");
                 }
-                else if (this.TBNombre.Text == Campo)
+                else if (this.TBArea.Text == Campo)
                 {
                     MensajeError("Ingrese el Nombre del Empleado a Registrar");
-                }
-                else if (this.TBApellidos.Text == Campo)
-                {
-                    MensajeError("Ingrese los Apellidos del Empleado a Registrar");
                 }
 
                 else
@@ -148,13 +82,13 @@ namespace Aduana_Gana
 
                     if (this.Digitar)
                     {
-                        rptaDatosBasicos = fEmpleado.Guardar_DatosBasicos
+                        rptaDatosBasicos = fArea.Guardar_DatosBasicos
                             (
                                 //Datos Auxiliares
                                 1,
 
                                 //Panel Datos Basicos
-                                Convert.ToInt32(this.CBArea.SelectedValue), this.TBCodigo.Text, this.TBNombre.Text, this.TBApellidos.Text, this.TBDireccion.Text, this.TBTelefono.Text, this.TBSalario.Text, this.CBJefe.Text, this.CBSexo.Text, this.DTFecha.Value, Convert.ToInt32(Personal_Cargo)
+                                this.TBCodigo.Text, this.TBArea.Text, this.TBDescripcion.Text
                             );
                     }
 
@@ -175,11 +109,7 @@ namespace Aduana_Gana
                     {
                         if (this.Digitar)
                         {
-                            this.MensajeOk("Procedimiento de Digitalización Exitoso - Aduana Gama \n\n" + "La Bodega: “" + this.TBBodega.Text + "” a Sido Registrada.");
-                        }
-                        else
-                        {
-                            this.MensajeOk("Procedimiento de Modificación Exitoso - Aduana Gama \n\n" + "El Registro de la Bodega: “" + this.TBBodega.Text + "” a Sido Modificado.");
+                            this.MensajeOk("Procedimiento de Digitalización Exitoso - Aduana Gama \n\n" + "La Area: “" + this.TBArea.Text + "” a Sido Registrada.");
                         }
                     }
 
@@ -191,7 +121,7 @@ namespace Aduana_Gana
                     //Llamada de Clase
                     this.Digitar = true;
                     this.Botones();
-                    this.Limpiar_Datos();
+                    this.Limpiar();
                 }
             }
             catch (Exception ex)
@@ -199,7 +129,6 @@ namespace Aduana_Gana
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
         }
-
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
@@ -220,30 +149,12 @@ namespace Aduana_Gana
                         //Llamada de Clase
                         this.Digitar = true;
                         this.Botones();
-                        this.Limpiar_Datos();
-                    }
-                }
-
-                else
-                {
-                    if (Editar == "1")
-                    {
-                        //Metodo Guardar y editar
-                        this.Guardar_SQL();
-                    }
-                    else
-                    {
-                        MessageBox.Show("El Usuario Iniciado Actualmente no Contiene Permisos Para Editar Datos", "Aduana Gama", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-                        //Llamada de Clase
-                        this.Digitar = true;
-                        this.Botones();
-                        this.Limpiar_Datos();
+                        this.Limpiar();
                     }
                 }
 
                 //Focus
-                this.TBBodega.Select();
+                this.TBArea.Select();
             }
             catch (Exception ex)
             {

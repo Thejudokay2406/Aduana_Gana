@@ -25,14 +25,21 @@ namespace Datos
 
                 //Datos Auxiliares y Llave Primaria
                 Comando.Parameters.Add("@Auto", SqlDbType.Int).Value = Obj.Auto;
+                Comando.Parameters.Add("@Idarea", SqlDbType.Int).Value = Obj.Idarea;
 
                 //Panel Datos Basicos
+                Comando.Parameters.Add("@Codigo", SqlDbType.VarChar).Value = Obj.Codigo;
                 Comando.Parameters.Add("@Nombre", SqlDbType.VarChar).Value = Obj.Nombre;
                 Comando.Parameters.Add("@Apellidos", SqlDbType.VarChar).Value = Obj.Apellidos;
                 Comando.Parameters.Add("@Direccion", SqlDbType.VarChar).Value = Obj.Direccion;
                 Comando.Parameters.Add("@Telefono", SqlDbType.VarChar).Value = Obj.Telefono;
                 Comando.Parameters.Add("@Salario", SqlDbType.VarChar).Value = Obj.Salario;
-               
+
+                Comando.Parameters.Add("@Jefe", SqlDbType.VarChar).Value = Obj.Jefe;
+                Comando.Parameters.Add("@Sexo", SqlDbType.VarChar).Value = Obj.Sexo;
+                Comando.Parameters.Add("@Ingreso", SqlDbType.VarChar).Value = Obj.Ingreso;
+                Comando.Parameters.Add("@Personal", SqlDbType.Int).Value = Obj.Personal;
+
                 SqlCon.Open();
                 Rpta = Comando.ExecuteNonQuery() != 1 ? "OK" : "Error al Realizar el Registro";
             }
