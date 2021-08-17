@@ -12,12 +12,11 @@ namespace Negocio
 {
     public class fArea
     {
-        public static DataTable Lista()
+        public static DataTable Lista(int Auto)
         {
-            Conexion_Empleados Datos = new Conexion_Empleados();
-            return Datos.Lista();
+            Conexion_Area Datos = new Conexion_Area();
+            return Datos.Lista(Auto);
         }
-
 
         public static string Guardar_DatosBasicos
             (

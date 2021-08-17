@@ -130,6 +130,7 @@ namespace Aduana_Gana
             this.TBContraseña.Size = new System.Drawing.Size(248, 22);
             this.TBContraseña.TabIndex = 3;
             this.TBContraseña.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TBContraseña.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TBContraseña_KeyUp);
             // 
             // label2
             // 

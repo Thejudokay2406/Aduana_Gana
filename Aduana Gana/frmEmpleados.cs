@@ -83,13 +83,13 @@ namespace Aduana_Gana
         {
             try
             {
-                this.CBJefe.DataSource = fSucurzal.Lista(3);
-                this.CBJefe.ValueMember = "Codigo";
-                this.CBJefe.DisplayMember = "Sucursal";
+                //this.CBJefe.DataSource = fArea.Lista(3);
+                //this.CBJefe.ValueMember = "Código";
+                //this.CBJefe.DisplayMember = "Area";
 
                 this.CBArea.DataSource = fArea.Lista(3);
                 this.CBArea.ValueMember = "Codigo";
-                this.CBArea.DisplayMember = "Sucursal";
+                this.CBArea.DisplayMember = "Área";
             }
             catch (Exception ex)
             {
@@ -158,28 +158,27 @@ namespace Aduana_Gana
                             );
                     }
 
-                    //else
-                    //{
-                    //    rptaDatosBasicos = fEmpleado.Editar_DatosBasicos
+                    else
+                    {
+                        rptaDatosBasicos = fEmpleado.Editar_DatosBasicos
+                            (
+                                //Datos Auxiliares
+                                1,Convert.ToInt32(this.TBIdempleado.Text),
 
-                    //        (
-                    //             //Datos Auxiliares y Llave Primaria
-                    //             2, Convert.ToInt32(TBIdbodega.Text),
-
-                    //            //Panel Datos Basicos
-                    //            Convert.ToInt32(this.CBSucurzal.SelectedValue), this.TBBodega.Text, this.TBDocumento.Text, this.TBDescripcion.Text, this.TBDirector.Text, this.TBCiudad.Text, this.TBTelefono01.Text, this.TBExtension01.Text, this.TBTelefono02.Text, this.TBExtension02.Text, this.TBMovil01.Text, this.TBMovil02.Text, this.TBCorreo.Text, this.TBMedidas.Text, this.TBDireccion01.Text, this.TBDireccion02.Text
-                    //        );
-                    //}
+                                //Panel Datos Basicos
+                                Convert.ToInt32(this.CBArea.SelectedValue), this.TBCodigo.Text, this.TBNombre.Text, this.TBApellidos.Text, this.TBDireccion.Text, this.TBTelefono.Text, this.TBSalario.Text, this.CBJefe.Text, this.CBSexo.Text, this.DTFecha.Value, Convert.ToInt32(Personal_Cargo)
+                            );
+                    }
 
                     if (rptaDatosBasicos.Equals("OK"))
                     {
                         if (this.Digitar)
                         {
-                            this.MensajeOk("Procedimiento de Digitalización Exitoso - Aduana Gama \n\n" + "La Bodega: “" + this.TBBodega.Text + "” a Sido Registrada.");
+                            this.MensajeOk("Procedimiento de Digitalización Exitoso - Aduana Gama \n\n" + "El Empleado: “" + this.TBNombre.Text + "” a Sido Registrado.");
                         }
                         else
                         {
-                            this.MensajeOk("Procedimiento de Modificación Exitoso - Aduana Gama \n\n" + "El Registro de la Bodega: “" + this.TBBodega.Text + "” a Sido Modificado.");
+                            this.MensajeOk("Procedimiento de Modificación Exitoso - Aduana Gama \n\n" + "El Registro del Empleado: “" + this.TBNombre.Text + "” a Sido Modificado.");
                         }
                     }
 
@@ -243,12 +242,495 @@ namespace Aduana_Gana
                 }
 
                 //Focus
-                this.TBBodega.Select();
+                this.TBNombre.Select();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
         }
+
+
+        private void TBCodigo_KeyUp(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.Down))
+                {
+                    //Al precionar la tecla Bajar se realiza Focus al Texboxt Siguiente
+
+                    this.TBDescripcion.Select();
+                }
+                else if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.F9))
+                {
+                    this.Digitar = true;
+                    this.Botones();
+
+                    this.Limpiar_Datos();
+                    this.TBBuscar.Clear();
+
+                    //Se Limpian las Filas y Columnas de la tabla
+                    this.DGResultados.DataSource = null;
+                    this.lblTotal.Text = "Datos Registrados: 0";
+                }
+                else if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.F10))
+                {
+                    //Al precionar las teclas F10 se realizara el registro en la base de datos
+                    //Y se realizara las validaciones en el sistema
+
+                    if (Digitar)
+                    {
+                        DialogResult result = MessageBox.Show("¿Desea Registrar los Campos Digitados?", "Leal Enterprise - Solicitud de Procedimiento", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                        if (result == DialogResult.Yes)
+                        {
+                            if (Guardar == "1")
+                            {
+                                //Llamada de Clase
+                                this.Guardar_SQL();
+                            }
+                            else
+                            {
+                                MessageBox.Show("El Usuario Iniciado no Contiene Permisos Para Guardar Datos en el Sistema", "Leal Enterprise", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                                //Al realizar la validacion en la base de datos y encontrar que no hay acceso a al operacion solicitada
+                                //se procede limpiar los campos de texto y habilitaciond de los botones a su estado por DEFECTO.
+
+                                this.Limpiar_Datos();
+                            }
+                        }
+                        else
+                        {
+                            //Se el usuario presiona NO en el mensaje el FOCUS regresara al campo de texto
+                            //Donde se realizo la operacion o combinacion de teclas
+                            this.TBDocumento.Select();
+                        }
+                    }
+                    else
+                    {
+                        DialogResult result = MessageBox.Show("¿Desea Actualizar los Campos Consultados?", "Leal Enterprise - Solicitud de Procedimiento", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                        if (result == DialogResult.Yes)
+                        {
+                            //Llamada de Clase
+                            this.Digitar = false;
+                            this.Guardar_SQL();
+                        }
+                        else
+                        {
+                            //Se el usuario presiona NO en el mensaje el FOCUS regresara al campo de texto
+                            //Donde se realizo la operacion o combinacion de teclas
+                            this.TBDocumento.Select();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+        private void TBNombre_KeyUp(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.Down))
+                {
+                    //Al precionar la tecla Bajar se realiza Focus al Texboxt Siguiente
+
+                    this.TBDescripcion.Select();
+                }
+                else if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.F9))
+                {
+                    this.Digitar = true;
+                    this.Botones();
+
+                    this.Limpiar_Datos();
+                    this.TBBuscar.Clear();
+
+                    //Se Limpian las Filas y Columnas de la tabla
+                    this.DGResultados.DataSource = null;
+                    this.lblTotal.Text = "Datos Registrados: 0";
+                }
+                else if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.F10))
+                {
+                    //Al precionar las teclas F10 se realizara el registro en la base de datos
+                    //Y se realizara las validaciones en el sistema
+
+                    if (Digitar)
+                    {
+                        DialogResult result = MessageBox.Show("¿Desea Registrar los Campos Digitados?", "Leal Enterprise - Solicitud de Procedimiento", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                        if (result == DialogResult.Yes)
+                        {
+                            if (Guardar == "1")
+                            {
+                                //Llamada de Clase
+                                this.Guardar_SQL();
+                            }
+                            else
+                            {
+                                MessageBox.Show("El Usuario Iniciado no Contiene Permisos Para Guardar Datos en el Sistema", "Leal Enterprise", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                                //Al realizar la validacion en la base de datos y encontrar que no hay acceso a al operacion solicitada
+                                //se procede limpiar los campos de texto y habilitaciond de los botones a su estado por DEFECTO.
+
+                                this.Limpiar_Datos();
+                            }
+                        }
+                        else
+                        {
+                            //Se el usuario presiona NO en el mensaje el FOCUS regresara al campo de texto
+                            //Donde se realizo la operacion o combinacion de teclas
+                            this.TBDocumento.Select();
+                        }
+                    }
+                    else
+                    {
+                        DialogResult result = MessageBox.Show("¿Desea Actualizar los Campos Consultados?", "Leal Enterprise - Solicitud de Procedimiento", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                        if (result == DialogResult.Yes)
+                        {
+                            //Llamada de Clase
+                            this.Digitar = false;
+                            this.Guardar_SQL();
+                        }
+                        else
+                        {
+                            //Se el usuario presiona NO en el mensaje el FOCUS regresara al campo de texto
+                            //Donde se realizo la operacion o combinacion de teclas
+                            this.TBDocumento.Select();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+        private void TBApellidos_KeyUp(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.Down))
+                {
+                    //Al precionar la tecla Bajar se realiza Focus al Texboxt Siguiente
+
+                    this.TBDescripcion.Select();
+                }
+                else if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.F9))
+                {
+                    this.Digitar = true;
+                    this.Botones();
+
+                    this.Limpiar_Datos();
+                    this.TBBuscar.Clear();
+
+                    //Se Limpian las Filas y Columnas de la tabla
+                    this.DGResultados.DataSource = null;
+                    this.lblTotal.Text = "Datos Registrados: 0";
+                }
+                else if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.F10))
+                {
+                    //Al precionar las teclas F10 se realizara el registro en la base de datos
+                    //Y se realizara las validaciones en el sistema
+
+                    if (Digitar)
+                    {
+                        DialogResult result = MessageBox.Show("¿Desea Registrar los Campos Digitados?", "Leal Enterprise - Solicitud de Procedimiento", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                        if (result == DialogResult.Yes)
+                        {
+                            if (Guardar == "1")
+                            {
+                                //Llamada de Clase
+                                this.Guardar_SQL();
+                            }
+                            else
+                            {
+                                MessageBox.Show("El Usuario Iniciado no Contiene Permisos Para Guardar Datos en el Sistema", "Leal Enterprise", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                                //Al realizar la validacion en la base de datos y encontrar que no hay acceso a al operacion solicitada
+                                //se procede limpiar los campos de texto y habilitaciond de los botones a su estado por DEFECTO.
+
+                                this.Limpiar_Datos();
+                            }
+                        }
+                        else
+                        {
+                            //Se el usuario presiona NO en el mensaje el FOCUS regresara al campo de texto
+                            //Donde se realizo la operacion o combinacion de teclas
+                            this.TBDocumento.Select();
+                        }
+                    }
+                    else
+                    {
+                        DialogResult result = MessageBox.Show("¿Desea Actualizar los Campos Consultados?", "Leal Enterprise - Solicitud de Procedimiento", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                        if (result == DialogResult.Yes)
+                        {
+                            //Llamada de Clase
+                            this.Digitar = false;
+                            this.Guardar_SQL();
+                        }
+                        else
+                        {
+                            //Se el usuario presiona NO en el mensaje el FOCUS regresara al campo de texto
+                            //Donde se realizo la operacion o combinacion de teclas
+                            this.TBDocumento.Select();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+        private void TBDireccion_KeyUp(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.Down))
+                {
+                    //Al precionar la tecla Bajar se realiza Focus al Texboxt Siguiente
+
+                    this.TBDescripcion.Select();
+                }
+                else if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.F9))
+                {
+                    this.Digitar = true;
+                    this.Botones();
+
+                    this.Limpiar_Datos();
+                    this.TBBuscar.Clear();
+
+                    //Se Limpian las Filas y Columnas de la tabla
+                    this.DGResultados.DataSource = null;
+                    this.lblTotal.Text = "Datos Registrados: 0";
+                }
+                else if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.F10))
+                {
+                    //Al precionar las teclas F10 se realizara el registro en la base de datos
+                    //Y se realizara las validaciones en el sistema
+
+                    if (Digitar)
+                    {
+                        DialogResult result = MessageBox.Show("¿Desea Registrar los Campos Digitados?", "Leal Enterprise - Solicitud de Procedimiento", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                        if (result == DialogResult.Yes)
+                        {
+                            if (Guardar == "1")
+                            {
+                                //Llamada de Clase
+                                this.Guardar_SQL();
+                            }
+                            else
+                            {
+                                MessageBox.Show("El Usuario Iniciado no Contiene Permisos Para Guardar Datos en el Sistema", "Leal Enterprise", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                                //Al realizar la validacion en la base de datos y encontrar que no hay acceso a al operacion solicitada
+                                //se procede limpiar los campos de texto y habilitaciond de los botones a su estado por DEFECTO.
+
+                                this.Limpiar_Datos();
+                            }
+                        }
+                        else
+                        {
+                            //Se el usuario presiona NO en el mensaje el FOCUS regresara al campo de texto
+                            //Donde se realizo la operacion o combinacion de teclas
+                            this.TBDocumento.Select();
+                        }
+                    }
+                    else
+                    {
+                        DialogResult result = MessageBox.Show("¿Desea Actualizar los Campos Consultados?", "Leal Enterprise - Solicitud de Procedimiento", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                        if (result == DialogResult.Yes)
+                        {
+                            //Llamada de Clase
+                            this.Digitar = false;
+                            this.Guardar_SQL();
+                        }
+                        else
+                        {
+                            //Se el usuario presiona NO en el mensaje el FOCUS regresara al campo de texto
+                            //Donde se realizo la operacion o combinacion de teclas
+                            this.TBDocumento.Select();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+        private void TBTelefono_KeyUp(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.Down))
+                {
+                    //Al precionar la tecla Bajar se realiza Focus al Texboxt Siguiente
+
+                    this.TBDescripcion.Select();
+                }
+                else if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.F9))
+                {
+                    this.Digitar = true;
+                    this.Botones();
+
+                    this.Limpiar_Datos();
+                    this.TBBuscar.Clear();
+
+                    //Se Limpian las Filas y Columnas de la tabla
+                    this.DGResultados.DataSource = null;
+                    this.lblTotal.Text = "Datos Registrados: 0";
+                }
+                else if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.F10))
+                {
+                    //Al precionar las teclas F10 se realizara el registro en la base de datos
+                    //Y se realizara las validaciones en el sistema
+
+                    if (Digitar)
+                    {
+                        DialogResult result = MessageBox.Show("¿Desea Registrar los Campos Digitados?", "Leal Enterprise - Solicitud de Procedimiento", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                        if (result == DialogResult.Yes)
+                        {
+                            if (Guardar == "1")
+                            {
+                                //Llamada de Clase
+                                this.Guardar_SQL();
+                            }
+                            else
+                            {
+                                MessageBox.Show("El Usuario Iniciado no Contiene Permisos Para Guardar Datos en el Sistema", "Leal Enterprise", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                                //Al realizar la validacion en la base de datos y encontrar que no hay acceso a al operacion solicitada
+                                //se procede limpiar los campos de texto y habilitaciond de los botones a su estado por DEFECTO.
+
+                                this.Limpiar_Datos();
+                            }
+                        }
+                        else
+                        {
+                            //Se el usuario presiona NO en el mensaje el FOCUS regresara al campo de texto
+                            //Donde se realizo la operacion o combinacion de teclas
+                            this.TBDocumento.Select();
+                        }
+                    }
+                    else
+                    {
+                        DialogResult result = MessageBox.Show("¿Desea Actualizar los Campos Consultados?", "Leal Enterprise - Solicitud de Procedimiento", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                        if (result == DialogResult.Yes)
+                        {
+                            //Llamada de Clase
+                            this.Digitar = false;
+                            this.Guardar_SQL();
+                        }
+                        else
+                        {
+                            //Se el usuario presiona NO en el mensaje el FOCUS regresara al campo de texto
+                            //Donde se realizo la operacion o combinacion de teclas
+                            this.TBDocumento.Select();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+        private void TBSalario_KeyUp(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.Down))
+                {
+                    //Al precionar la tecla Bajar se realiza Focus al Texboxt Siguiente
+
+                    this.TBDescripcion.Select();
+                }
+                else if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.F9))
+                {
+                    this.Digitar = true;
+                    this.Botones();
+
+                    this.Limpiar_Datos();
+                    this.TBBuscar.Clear();
+
+                    //Se Limpian las Filas y Columnas de la tabla
+                    this.DGResultados.DataSource = null;
+                    this.lblTotal.Text = "Datos Registrados: 0";
+                }
+                else if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.F10))
+                {
+                    //Al precionar las teclas F10 se realizara el registro en la base de datos
+                    //Y se realizara las validaciones en el sistema
+
+                    if (Digitar)
+                    {
+                        DialogResult result = MessageBox.Show("¿Desea Registrar los Campos Digitados?", "Leal Enterprise - Solicitud de Procedimiento", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                        if (result == DialogResult.Yes)
+                        {
+                            if (Guardar == "1")
+                            {
+                                //Llamada de Clase
+                                this.Guardar_SQL();
+                            }
+                            else
+                            {
+                                MessageBox.Show("El Usuario Iniciado no Contiene Permisos Para Guardar Datos en el Sistema", "Leal Enterprise", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                                //Al realizar la validacion en la base de datos y encontrar que no hay acceso a al operacion solicitada
+                                //se procede limpiar los campos de texto y habilitaciond de los botones a su estado por DEFECTO.
+
+                                this.Limpiar_Datos();
+                            }
+                        }
+                        else
+                        {
+                            //Se el usuario presiona NO en el mensaje el FOCUS regresara al campo de texto
+                            //Donde se realizo la operacion o combinacion de teclas
+                            this.TBDocumento.Select();
+                        }
+                    }
+                    else
+                    {
+                        DialogResult result = MessageBox.Show("¿Desea Actualizar los Campos Consultados?", "Leal Enterprise - Solicitud de Procedimiento", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                        if (result == DialogResult.Yes)
+                        {
+                            //Llamada de Clase
+                            this.Digitar = false;
+                            this.Guardar_SQL();
+                        }
+                        else
+                        {
+                            //Se el usuario presiona NO en el mensaje el FOCUS regresara al campo de texto
+                            //Donde se realizo la operacion o combinacion de teclas
+                            this.TBDocumento.Select();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+
     }
 }

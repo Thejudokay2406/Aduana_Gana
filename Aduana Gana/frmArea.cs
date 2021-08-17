@@ -43,10 +43,20 @@ namespace Aduana_Gana
             if (Digitar)
             {
                 this.btnGuardar.Enabled = true;
-                this.btnGuardar.Text = "Guardar";
+                this.btnGuardar.Text = "Guardar - F10";
+
+                this.btnEliminar.Enabled = false;
+                this.btnCancelar.Enabled = false;
+            }
+            else if (!Digitar)
+            {
+                this.btnGuardar.Enabled = true;
+                this.btnGuardar.Text = "Editar - F10";
+
+                this.btnEliminar.Enabled = true;
+                this.btnCancelar.Enabled = true;
             }
         }
-
 
         //Mensaje de confirmacion
         private void MensajeOk(string mensaje)
@@ -161,5 +171,16 @@ namespace Aduana_Gana
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
         }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

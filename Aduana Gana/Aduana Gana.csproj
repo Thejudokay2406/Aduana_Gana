@@ -107,6 +107,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -138,6 +139,21 @@
       <Project>{37f1cb4a-0fdc-4b6d-9a65-20aa8b74f328}</Project>
       <Name>Negocio</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnAgregar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnCancelar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnEditar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnEliminar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnGuardar.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

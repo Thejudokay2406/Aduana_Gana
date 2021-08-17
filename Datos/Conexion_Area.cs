@@ -12,6 +12,37 @@ namespace Datos
 {
     public class Conexion_Area
     {
+        public DataTable Lista(int Auto)
+        {
+            SqlDataReader Resultado;
+            DataTable Tabla = new DataTable();
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon = Conexion_SQLServer.getInstancia().Conexion();
+                SqlCommand Comando = new SqlCommand("Area.GA_DatosBasicos", SqlCon);
+                Comando.CommandType = CommandType.StoredProcedure;
+
+                Comando.Parameters.Add("@Consulta", SqlDbType.Int).Value = Auto;
+                
+                SqlCon.Open();
+                Resultado = Comando.ExecuteReader();
+                Tabla.Load(Resultado);
+                return Tabla;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open)
+                {
+                    SqlCon.Close();
+                }
+            }
+        }
+
         public string Guardar_DatosBasicos(Entidad_Area Obj)
         {
             string Rpta = "";
@@ -19,7 +50,7 @@ namespace Datos
             try
             {
                 SqlCon = Conexion_SQLServer.getInstancia().Conexion();
-                SqlCommand Comando = new SqlCommand("Archivo.GA_Area", SqlCon);
+                SqlCommand Comando = new SqlCommand("Area.GA_DatosBasicos", SqlCon);
                 Comando.CommandType = CommandType.StoredProcedure;
 
                 //Datos Auxiliares y Llave Primaria
