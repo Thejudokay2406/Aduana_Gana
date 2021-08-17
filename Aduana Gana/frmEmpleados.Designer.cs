@@ -1,7 +1,7 @@
 ﻿
 namespace Aduana_Gana
 {
-    partial class Form1
+    partial class frmEmpleados
     {
         /// <summary>
         /// Variable del diseñador necesaria.

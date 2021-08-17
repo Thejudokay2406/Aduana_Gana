@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Aduana_Gana
 {
-    public partial class Form1 : Form
+    public partial class frmEmpleados : Form
     {
-        public Form1()
+        public frmEmpleados()
         {
             InitializeComponent();
         }
