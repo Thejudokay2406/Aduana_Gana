@@ -12,6 +12,13 @@ namespace Negocio
 {
     public class fArea
     {
+        public static DataTable Lista()
+        {
+            Conexion_Empleados Datos = new Conexion_Empleados();
+            return Datos.Lista();
+        }
+
+
         public static string Guardar_DatosBasicos
             (
                 //Datos Auxiliares y Llaves Primaria

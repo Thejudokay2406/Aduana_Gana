@@ -13,6 +13,35 @@ namespace Datos
     public class Conexion_Empleados
     {
 
+        public DataTable Lista()
+        {
+            SqlDataReader Resultado;
+            DataTable Tabla = new DataTable();
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon = Conexion_SQLServer.getInstancia().Conexion();
+                SqlCommand Comando = new SqlCommand("GA_Empleado", SqlCon);
+                Comando.CommandType = CommandType.StoredProcedure;
+                SqlCon.Open();
+                Resultado = Comando.ExecuteReader();
+                Tabla.Load(Resultado);
+                return Tabla;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open)
+                {
+                    SqlCon.Close();
+                }
+            }
+        }
+
+
         public string Guardar_DatosBasicos(Entidad_Empleados Obj)
         {
             string Rpta = "";

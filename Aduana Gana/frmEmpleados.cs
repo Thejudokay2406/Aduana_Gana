@@ -87,7 +87,7 @@ namespace Aduana_Gana
                 this.CBJefe.ValueMember = "Codigo";
                 this.CBJefe.DisplayMember = "Sucursal";
 
-                this.CBArea.DataSource = fare.Lista(3);
+                this.CBArea.DataSource = fArea.Lista(3);
                 this.CBArea.ValueMember = "Codigo";
                 this.CBArea.DisplayMember = "Sucursal";
             }

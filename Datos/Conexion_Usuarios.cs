@@ -21,7 +21,7 @@ namespace Datos
             try
             {
                 SqlCon = Conexion_SQLServer.getInstancia().Conexion();
-                SqlCommand Comando = new SqlCommand("Sistema.Login", SqlCon);
+                SqlCommand Comando = new SqlCommand("Login", SqlCon);
                 Comando.CommandType = CommandType.StoredProcedure;
 
                 Comando.Parameters.Add("@Usuario", SqlDbType.VarChar).Value = usuario;
