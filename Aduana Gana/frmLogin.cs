@@ -21,13 +21,7 @@ namespace Aduana_Gana
         {
             try
             {
-                foreach (Process proceso in Process.GetProcesses())
-                {
-                    if (proceso.ProcessName == "nombre_proceso")
-                    {
-                        proceso.Kill();
-                    }
-                }
+                
             }
             catch (Exception ex)
             {
