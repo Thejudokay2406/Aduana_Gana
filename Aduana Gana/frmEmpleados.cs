@@ -34,6 +34,9 @@ namespace Aduana_Gana
 
         private void frmEmpleados_Load(object sender, EventArgs e)
         {
+            //
+            this.Combobox_General();
+
             this.CBArea.SelectedIndex = 0;
             this.CBSexo.SelectedIndex = 0;
             this.CBJefe.SelectedIndex = 0;
@@ -79,13 +82,13 @@ namespace Aduana_Gana
             }
         }
 
-        private void Combobox_Sucurzal()
+        private void Combobox_General()
         {
             try
             {
-                //this.CBJefe.DataSource = fArea.Lista(3);
-                //this.CBJefe.ValueMember = "Código";
-                //this.CBJefe.DisplayMember = "Area";
+                this.CBEmpleado.DataSource = fEmpleado.Lista(3);
+                this.CBEmpleado.ValueMember = "Código";
+                this.CBEmpleado.DisplayMember = "Empleado";
 
                 this.CBArea.DataSource = fArea.Lista(3);
                 this.CBArea.ValueMember = "Codigo";
@@ -115,6 +118,7 @@ namespace Aduana_Gana
         {
             MessageBox.Show(mensaje, "Aduana Gama - Solicitud Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
+
 
         //Mensaje de Error
         private void MensajeError(string mensaje)
@@ -259,7 +263,13 @@ namespace Aduana_Gana
                 {
                     //Al precionar la tecla Bajar se realiza Focus al Texboxt Siguiente
 
-                    this.TBDescripcion.Select();
+                    this.TBNombre.Select();
+                }
+                else if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.Up))
+                {
+                    //Al precionar la tecla Bajar se realiza Focus al Texboxt Siguiente
+
+                    this.TBSalario.Select();
                 }
                 else if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.F9))
                 {
@@ -280,7 +290,7 @@ namespace Aduana_Gana
 
                     if (Digitar)
                     {
-                        DialogResult result = MessageBox.Show("¿Desea Registrar los Campos Digitados?", "Leal Enterprise - Solicitud de Procedimiento", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        DialogResult result = MessageBox.Show("¿Desea Registrar los Campos Digitados?", "Aduana Gama - Solicitud de Procedimiento", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                         if (result == DialogResult.Yes)
                         {
@@ -291,7 +301,7 @@ namespace Aduana_Gana
                             }
                             else
                             {
-                                MessageBox.Show("El Usuario Iniciado no Contiene Permisos Para Guardar Datos en el Sistema", "Leal Enterprise", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                MessageBox.Show("El Usuario Iniciado no Contiene Permisos Para Guardar Datos en el Sistema", "Aduana Gama", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
                                 //Al realizar la validacion en la base de datos y encontrar que no hay acceso a al operacion solicitada
                                 //se procede limpiar los campos de texto y habilitaciond de los botones a su estado por DEFECTO.
@@ -303,12 +313,12 @@ namespace Aduana_Gana
                         {
                             //Se el usuario presiona NO en el mensaje el FOCUS regresara al campo de texto
                             //Donde se realizo la operacion o combinacion de teclas
-                            this.TBDocumento.Select();
+                            this.TBCodigo.Select();
                         }
                     }
                     else
                     {
-                        DialogResult result = MessageBox.Show("¿Desea Actualizar los Campos Consultados?", "Leal Enterprise - Solicitud de Procedimiento", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        DialogResult result = MessageBox.Show("¿Desea Actualizar los Campos Consultados?", "Aduana Gama - Solicitud de Procedimiento", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                         if (result == DialogResult.Yes)
                         {
@@ -320,7 +330,7 @@ namespace Aduana_Gana
                         {
                             //Se el usuario presiona NO en el mensaje el FOCUS regresara al campo de texto
                             //Donde se realizo la operacion o combinacion de teclas
-                            this.TBDocumento.Select();
+                            this.TBCodigo.Select();
                         }
                     }
                 }
@@ -339,7 +349,13 @@ namespace Aduana_Gana
                 {
                     //Al precionar la tecla Bajar se realiza Focus al Texboxt Siguiente
 
-                    this.TBDescripcion.Select();
+                    this.TBApellidos.Select();
+                }
+                else if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.Up))
+                {
+                    //Al precionar la tecla Bajar se realiza Focus al Texboxt Siguiente
+
+                    this.TBSalario.Select();
                 }
                 else if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.F9))
                 {
@@ -360,7 +376,7 @@ namespace Aduana_Gana
 
                     if (Digitar)
                     {
-                        DialogResult result = MessageBox.Show("¿Desea Registrar los Campos Digitados?", "Leal Enterprise - Solicitud de Procedimiento", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        DialogResult result = MessageBox.Show("¿Desea Registrar los Campos Digitados?", "Aduana Gama - Solicitud de Procedimiento", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                         if (result == DialogResult.Yes)
                         {
@@ -371,7 +387,7 @@ namespace Aduana_Gana
                             }
                             else
                             {
-                                MessageBox.Show("El Usuario Iniciado no Contiene Permisos Para Guardar Datos en el Sistema", "Leal Enterprise", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                MessageBox.Show("El Usuario Iniciado no Contiene Permisos Para Guardar Datos en el Sistema", "Aduana Gama", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
                                 //Al realizar la validacion en la base de datos y encontrar que no hay acceso a al operacion solicitada
                                 //se procede limpiar los campos de texto y habilitaciond de los botones a su estado por DEFECTO.
@@ -383,12 +399,12 @@ namespace Aduana_Gana
                         {
                             //Se el usuario presiona NO en el mensaje el FOCUS regresara al campo de texto
                             //Donde se realizo la operacion o combinacion de teclas
-                            this.TBDocumento.Select();
+                            this.TBNombre.Select();
                         }
                     }
                     else
                     {
-                        DialogResult result = MessageBox.Show("¿Desea Actualizar los Campos Consultados?", "Leal Enterprise - Solicitud de Procedimiento", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        DialogResult result = MessageBox.Show("¿Desea Actualizar los Campos Consultados?", "Aduana Gama - Solicitud de Procedimiento", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                         if (result == DialogResult.Yes)
                         {
@@ -400,7 +416,7 @@ namespace Aduana_Gana
                         {
                             //Se el usuario presiona NO en el mensaje el FOCUS regresara al campo de texto
                             //Donde se realizo la operacion o combinacion de teclas
-                            this.TBDocumento.Select();
+                            this.TBNombre.Select();
                         }
                     }
                 }
@@ -419,7 +435,13 @@ namespace Aduana_Gana
                 {
                     //Al precionar la tecla Bajar se realiza Focus al Texboxt Siguiente
 
-                    this.TBDescripcion.Select();
+                    this.TBDireccion.Select();
+                }
+                else if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.Up))
+                {
+                    //Al precionar la tecla Bajar se realiza Focus al Texboxt Siguiente
+
+                    this.TBNombre.Select();
                 }
                 else if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.F9))
                 {
@@ -440,7 +462,7 @@ namespace Aduana_Gana
 
                     if (Digitar)
                     {
-                        DialogResult result = MessageBox.Show("¿Desea Registrar los Campos Digitados?", "Leal Enterprise - Solicitud de Procedimiento", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        DialogResult result = MessageBox.Show("¿Desea Registrar los Campos Digitados?", "Aduana Gama - Solicitud de Procedimiento", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                         if (result == DialogResult.Yes)
                         {
@@ -451,7 +473,7 @@ namespace Aduana_Gana
                             }
                             else
                             {
-                                MessageBox.Show("El Usuario Iniciado no Contiene Permisos Para Guardar Datos en el Sistema", "Leal Enterprise", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                MessageBox.Show("El Usuario Iniciado no Contiene Permisos Para Guardar Datos en el Sistema", "Aduana Gama", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
                                 //Al realizar la validacion en la base de datos y encontrar que no hay acceso a al operacion solicitada
                                 //se procede limpiar los campos de texto y habilitaciond de los botones a su estado por DEFECTO.
@@ -463,12 +485,12 @@ namespace Aduana_Gana
                         {
                             //Se el usuario presiona NO en el mensaje el FOCUS regresara al campo de texto
                             //Donde se realizo la operacion o combinacion de teclas
-                            this.TBDocumento.Select();
+                            this.TBApellidos.Select();
                         }
                     }
                     else
                     {
-                        DialogResult result = MessageBox.Show("¿Desea Actualizar los Campos Consultados?", "Leal Enterprise - Solicitud de Procedimiento", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        DialogResult result = MessageBox.Show("¿Desea Actualizar los Campos Consultados?", "Aduana Gama - Solicitud de Procedimiento", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                         if (result == DialogResult.Yes)
                         {
@@ -480,7 +502,7 @@ namespace Aduana_Gana
                         {
                             //Se el usuario presiona NO en el mensaje el FOCUS regresara al campo de texto
                             //Donde se realizo la operacion o combinacion de teclas
-                            this.TBDocumento.Select();
+                            this.TBApellidos.Select();
                         }
                     }
                 }
@@ -499,7 +521,13 @@ namespace Aduana_Gana
                 {
                     //Al precionar la tecla Bajar se realiza Focus al Texboxt Siguiente
 
-                    this.TBDescripcion.Select();
+                    this.TBTelefono.Select();
+                }
+                else if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.Up))
+                {
+                    //Al precionar la tecla Bajar se realiza Focus al Texboxt Siguiente
+
+                    this.TBApellidos.Select();
                 }
                 else if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.F9))
                 {
@@ -520,7 +548,7 @@ namespace Aduana_Gana
 
                     if (Digitar)
                     {
-                        DialogResult result = MessageBox.Show("¿Desea Registrar los Campos Digitados?", "Leal Enterprise - Solicitud de Procedimiento", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        DialogResult result = MessageBox.Show("¿Desea Registrar los Campos Digitados?", "Aduana Gama - Solicitud de Procedimiento", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                         if (result == DialogResult.Yes)
                         {
@@ -531,7 +559,7 @@ namespace Aduana_Gana
                             }
                             else
                             {
-                                MessageBox.Show("El Usuario Iniciado no Contiene Permisos Para Guardar Datos en el Sistema", "Leal Enterprise", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                MessageBox.Show("El Usuario Iniciado no Contiene Permisos Para Guardar Datos en el Sistema", "Aduana Gama", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
                                 //Al realizar la validacion en la base de datos y encontrar que no hay acceso a al operacion solicitada
                                 //se procede limpiar los campos de texto y habilitaciond de los botones a su estado por DEFECTO.
@@ -543,12 +571,12 @@ namespace Aduana_Gana
                         {
                             //Se el usuario presiona NO en el mensaje el FOCUS regresara al campo de texto
                             //Donde se realizo la operacion o combinacion de teclas
-                            this.TBDocumento.Select();
+                            this.TBDireccion.Select();
                         }
                     }
                     else
                     {
-                        DialogResult result = MessageBox.Show("¿Desea Actualizar los Campos Consultados?", "Leal Enterprise - Solicitud de Procedimiento", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        DialogResult result = MessageBox.Show("¿Desea Actualizar los Campos Consultados?", "Aduana Gama - Solicitud de Procedimiento", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                         if (result == DialogResult.Yes)
                         {
@@ -560,7 +588,7 @@ namespace Aduana_Gana
                         {
                             //Se el usuario presiona NO en el mensaje el FOCUS regresara al campo de texto
                             //Donde se realizo la operacion o combinacion de teclas
-                            this.TBDocumento.Select();
+                            this.TBDireccion.Select();
                         }
                     }
                 }
@@ -579,7 +607,13 @@ namespace Aduana_Gana
                 {
                     //Al precionar la tecla Bajar se realiza Focus al Texboxt Siguiente
 
-                    this.TBDescripcion.Select();
+                    this.TBSalario.Select();
+                }
+                else if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.Up))
+                {
+                    //Al precionar la tecla Bajar se realiza Focus al Texboxt Siguiente
+
+                    this.TBDireccion.Select();
                 }
                 else if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.F9))
                 {
@@ -600,7 +634,7 @@ namespace Aduana_Gana
 
                     if (Digitar)
                     {
-                        DialogResult result = MessageBox.Show("¿Desea Registrar los Campos Digitados?", "Leal Enterprise - Solicitud de Procedimiento", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        DialogResult result = MessageBox.Show("¿Desea Registrar los Campos Digitados?", "Aduana Gama - Solicitud de Procedimiento", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                         if (result == DialogResult.Yes)
                         {
@@ -611,7 +645,7 @@ namespace Aduana_Gana
                             }
                             else
                             {
-                                MessageBox.Show("El Usuario Iniciado no Contiene Permisos Para Guardar Datos en el Sistema", "Leal Enterprise", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                MessageBox.Show("El Usuario Iniciado no Contiene Permisos Para Guardar Datos en el Sistema", "Aduana Gama", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
                                 //Al realizar la validacion en la base de datos y encontrar que no hay acceso a al operacion solicitada
                                 //se procede limpiar los campos de texto y habilitaciond de los botones a su estado por DEFECTO.
@@ -623,12 +657,12 @@ namespace Aduana_Gana
                         {
                             //Se el usuario presiona NO en el mensaje el FOCUS regresara al campo de texto
                             //Donde se realizo la operacion o combinacion de teclas
-                            this.TBDocumento.Select();
+                            this.TBTelefono.Select();
                         }
                     }
                     else
                     {
-                        DialogResult result = MessageBox.Show("¿Desea Actualizar los Campos Consultados?", "Leal Enterprise - Solicitud de Procedimiento", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        DialogResult result = MessageBox.Show("¿Desea Actualizar los Campos Consultados?", "Aduana Gama - Solicitud de Procedimiento", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                         if (result == DialogResult.Yes)
                         {
@@ -640,7 +674,7 @@ namespace Aduana_Gana
                         {
                             //Se el usuario presiona NO en el mensaje el FOCUS regresara al campo de texto
                             //Donde se realizo la operacion o combinacion de teclas
-                            this.TBDocumento.Select();
+                            this.TBTelefono.Select();
                         }
                     }
                 }
@@ -659,7 +693,13 @@ namespace Aduana_Gana
                 {
                     //Al precionar la tecla Bajar se realiza Focus al Texboxt Siguiente
 
-                    this.TBDescripcion.Select();
+                    this.TBCodigo.Select();
+                }
+                else if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.Up))
+                {
+                    //Al precionar la tecla Bajar se realiza Focus al Texboxt Siguiente
+
+                    this.TBTelefono.Select();
                 }
                 else if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.F9))
                 {
@@ -680,7 +720,7 @@ namespace Aduana_Gana
 
                     if (Digitar)
                     {
-                        DialogResult result = MessageBox.Show("¿Desea Registrar los Campos Digitados?", "Leal Enterprise - Solicitud de Procedimiento", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        DialogResult result = MessageBox.Show("¿Desea Registrar los Campos Digitados?", "Aduana Gama - Solicitud de Procedimiento", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                         if (result == DialogResult.Yes)
                         {
@@ -691,7 +731,7 @@ namespace Aduana_Gana
                             }
                             else
                             {
-                                MessageBox.Show("El Usuario Iniciado no Contiene Permisos Para Guardar Datos en el Sistema", "Leal Enterprise", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                MessageBox.Show("El Usuario Iniciado no Contiene Permisos Para Guardar Datos en el Sistema", "Aduana Gama", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
                                 //Al realizar la validacion en la base de datos y encontrar que no hay acceso a al operacion solicitada
                                 //se procede limpiar los campos de texto y habilitaciond de los botones a su estado por DEFECTO.
@@ -703,12 +743,12 @@ namespace Aduana_Gana
                         {
                             //Se el usuario presiona NO en el mensaje el FOCUS regresara al campo de texto
                             //Donde se realizo la operacion o combinacion de teclas
-                            this.TBDocumento.Select();
+                            this.TBSalario.Select();
                         }
                     }
                     else
                     {
-                        DialogResult result = MessageBox.Show("¿Desea Actualizar los Campos Consultados?", "Leal Enterprise - Solicitud de Procedimiento", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        DialogResult result = MessageBox.Show("¿Desea Actualizar los Campos Consultados?", "Aduana Gama - Solicitud de Procedimiento", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                         if (result == DialogResult.Yes)
                         {
@@ -720,8 +760,107 @@ namespace Aduana_Gana
                         {
                             //Se el usuario presiona NO en el mensaje el FOCUS regresara al campo de texto
                             //Donde se realizo la operacion o combinacion de teclas
-                            this.TBDocumento.Select();
+                            this.TBSalario.Select();
                         }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+        private void TBBuscar_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Consultar == "1")
+                {
+                    if (TBBuscar.Text != "")
+                    {
+                        this.DGResultados.DataSource = fEmpleado.Buscar(1, this.TBBuscar.Text);
+                        this.DGResultados.Columns[0].Visible = false;
+
+                        lblTotal.Text = "Datos Registrados: " + Convert.ToString(DGResultados.Rows.Count);
+
+                        this.btnEliminar.Enabled = true;
+                        this.DGResultados.Enabled = true;
+                    }
+                    else
+                    {
+                        //Se Limpian las Filas y Columnas de la tabla
+                        this.DGResultados.DataSource = null;
+                        this.DGResultados.Enabled = false;
+                        this.lblTotal.Text = "Datos Registrados: 0";
+
+                    }
+                }
+
+                else
+                {
+                    MessageBox.Show(" El Usuario Iniciado no Contiene Permisos Para Realizar Consultas", "Aduana Gama - 'Acceso Denegado' ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+
+        private void TBIdempleado_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (TBIdempleado.Text != string.Empty)
+                {
+                    DataTable Datos = Negocio.fEmpleado.Buscar(2, this.TBIdempleado.Text);
+                    //Evaluamos si  existen los Datos
+                    if (Datos.Rows.Count == 0)
+                    {
+                        MessageBox.Show("Actualmente No Se Encuentran Registros En La Base De Datos", "Aduana Gama - Consulta De Registro Invalida", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        //Captura de Valores en la Base de Datos
+
+                        //Idsucurzal = Datos.Rows[0][0].ToString();
+                        //Nombre = Datos.Rows[0][1].ToString();
+                        //Documento = Datos.Rows[0][2].ToString();
+                        //Descripcion = Datos.Rows[0][3].ToString();
+                        //Director = Datos.Rows[0][4].ToString();
+                        //Ciudad = Datos.Rows[0][5].ToString();
+                        //Telefono01 = Datos.Rows[0][6].ToString();
+                        //Extension01 = Datos.Rows[0][7].ToString();
+                        //Telefono02 = Datos.Rows[0][8].ToString();
+                        //Extension02 = Datos.Rows[0][9].ToString();
+                        //Movil01 = Datos.Rows[0][10].ToString();
+                        //Movil02 = Datos.Rows[0][11].ToString();
+                        //Correo = Datos.Rows[0][12].ToString();
+                        //Medida = Datos.Rows[0][13].ToString();
+                        //Direccion01 = Datos.Rows[0][14].ToString();
+                        //Direccion02 = Datos.Rows[0][15].ToString();
+
+
+                        ////Se procede a completar los campos de texto segun las consulta Realizada anteriormente en la base de datos
+
+                        //this.CBSucurzal.SelectedValue = Idsucurzal;
+                        //this.TBBodega.Text = Nombre;
+                        //this.TBDocumento.Text = Documento;
+                        //this.TBDescripcion.Text = Descripcion;
+                        //this.TBDirector.Text = Director;
+                        //this.TBCiudad.Text = Ciudad;
+                        //this.TBTelefono01.Text = Telefono01;
+                        //this.TBExtension01.Text = Extension01;
+                        //this.TBTelefono02.Text = Telefono02;
+                        //this.TBExtension02.Text = Extension02;
+                        //this.TBMovil01.Text = Movil01;
+                        //this.TBMovil02.Text = Movil02;
+                        //this.TBCorreo.Text = Correo;
+                        //this.TBMedidas.Text = Medida;
+                        //this.TBDireccion01.Text = Direccion01;
+                        //this.TBDireccion02.Text = Direccion02;
                     }
                 }
             }

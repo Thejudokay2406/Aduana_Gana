@@ -12,6 +12,17 @@ namespace Negocio
 {
     public class fEmpleado
     {
+        public static DataTable Lista(int Auto)
+        {
+            Conexion_Empleados Datos = new Conexion_Empleados();
+            return Datos.Lista(Auto);
+        }
+
+        public static DataTable Buscar(int Auto, string Filtro)
+        {
+            Conexion_Empleados Datos = new Conexion_Empleados();
+            return Datos.Buscar(Auto, Filtro);
+        }
 
         public static string Guardar_DatosBasicos
             (

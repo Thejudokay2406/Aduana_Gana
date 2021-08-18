@@ -24,7 +24,6 @@ namespace Aduana_Gana
         public string SQL_Editar = "";
         public string SQL_Eliminar = "";
         public string SQL_Consultar = "";
-        public string SQL_Imprimir = "";
 
 
         public frmMenuPrincipal()
@@ -35,6 +34,23 @@ namespace Aduana_Gana
         private void frmMenuPrincipal_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void areaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmArea frmArea = new frmArea();
+            frmArea.MdiParent = this;
+            frmArea.Show(); ;
+
+            frmArea.Guardar = Convert.ToString(this.SQL_Guardar);
+            frmArea.Editar = Convert.ToString(this.SQL_Editar);
+            frmArea.Eliminar = Convert.ToString(this.SQL_Eliminar);
+            frmArea.Consultar = Convert.ToString(this.SQL_Consultar);
+        }
+
+        private void frmMenuPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

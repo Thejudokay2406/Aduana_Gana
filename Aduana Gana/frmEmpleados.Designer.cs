@@ -51,7 +51,7 @@ namespace Aduana_Gana
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.CBEmpleado = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnAgregar = new System.Windows.Forms.Button();
@@ -63,7 +63,7 @@ namespace Aduana_Gana
             this.label12 = new System.Windows.Forms.Label();
             this.TBIdempleado = new System.Windows.Forms.TextBox();
             this.DGResultados = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TBBuscar = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button3 = new System.Windows.Forms.Button();
@@ -364,7 +364,7 @@ namespace Aduana_Gana
             this.tabPage2.Controls.Add(this.btnAgregar);
             this.tabPage2.Controls.Add(this.dataGridView1);
             this.tabPage2.Controls.Add(this.label10);
-            this.tabPage2.Controls.Add(this.comboBox2);
+            this.tabPage2.Controls.Add(this.CBEmpleado);
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -373,15 +373,15 @@ namespace Aduana_Gana
             this.tabPage2.Text = "Personal a Cargo";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // comboBox2
+            // CBEmpleado
             // 
-            this.comboBox2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(130, 6);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(319, 23);
-            this.comboBox2.TabIndex = 0;
+            this.CBEmpleado.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.CBEmpleado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBEmpleado.FormattingEnabled = true;
+            this.CBEmpleado.Location = new System.Drawing.Point(130, 6);
+            this.CBEmpleado.Name = "CBEmpleado";
+            this.CBEmpleado.Size = new System.Drawing.Size(319, 23);
+            this.CBEmpleado.TabIndex = 0;
             // 
             // label10
             // 
@@ -501,6 +501,7 @@ namespace Aduana_Gana
             this.TBIdempleado.Name = "TBIdempleado";
             this.TBIdempleado.Size = new System.Drawing.Size(100, 21);
             this.TBIdempleado.TabIndex = 23;
+            this.TBIdempleado.TextChanged += new System.EventHandler(this.TBIdempleado_TextChanged);
             // 
             // DGResultados
             // 
@@ -516,15 +517,16 @@ namespace Aduana_Gana
             this.DGResultados.Size = new System.Drawing.Size(437, 284);
             this.DGResultados.TabIndex = 0;
             // 
-            // textBox1
+            // TBBuscar
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.TBBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(141, 21);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(302, 21);
-            this.textBox1.TabIndex = 1;
+            this.TBBuscar.Location = new System.Drawing.Point(141, 21);
+            this.TBBuscar.Name = "TBBuscar";
+            this.TBBuscar.Size = new System.Drawing.Size(302, 21);
+            this.TBBuscar.TabIndex = 1;
+            this.TBBuscar.TextChanged += new System.EventHandler(this.TBBuscar_TextChanged);
             // 
             // label13
             // 
@@ -546,7 +548,7 @@ namespace Aduana_Gana
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.btnEliminar);
             this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.TBBuscar);
             this.groupBox1.Controls.Add(this.DGResultados);
             this.groupBox1.Location = new System.Drawing.Point(481, 12);
             this.groupBox1.Name = "groupBox1";
@@ -652,7 +654,7 @@ namespace Aduana_Gana
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox CBEmpleado;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.CheckBox CHPersonal;
         private System.Windows.Forms.Label label11;
@@ -661,7 +663,7 @@ namespace Aduana_Gana
         private System.Windows.Forms.TextBox TBIdempleado;
         private System.Windows.Forms.DataGridView DGResultados;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TBBuscar;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btnEliminar;

@@ -9,7 +9,7 @@ namespace Entidad
     public class Entidad_Area
     {
         //Llaves primarias       
-        private int Idarea;
+        private int _Idarea;
 
         //Llaves Primarias Auxiliares;
         private int _Auto;
@@ -19,10 +19,10 @@ namespace Entidad
         private string _Area;
         private string _Descripcion;
 
-        public int Idarea1 { get => Idarea; set => Idarea = value; }
         public int Auto { get => _Auto; set => _Auto = value; }
         public string Codigo { get => _Codigo; set => _Codigo = value; }
         public string Area { get => _Area; set => _Area = value; }
         public string Descripcion { get => _Descripcion; set => _Descripcion = value; }
+        public int Idarea { get => _Idarea; set => _Idarea = value; }
     }
 }

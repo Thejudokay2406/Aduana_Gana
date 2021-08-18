@@ -93,17 +93,17 @@ namespace Aduana_Gana
                     {
 
                         frmMenuPrincipal frm = new frmMenuPrincipal();
-                        //frm.Idempleado = Datos.Rows[0][0].ToString();
-                        //frm.Idusuario = Datos.Rows[0][1].ToString();
-                        //frm.Empleado = Datos.Rows[0][2].ToString();
-                        //frm.UsuarioLogueado = Datos.Rows[0][3].ToString();
+                        frm.Idempleado = Datos.Rows[0][0].ToString();
+                        frm.Idusuario = Datos.Rows[0][1].ToString();
+                        frm.Empleado = Datos.Rows[0][2].ToString();
+                        frm.UsuarioLogueado = Datos.Rows[0][3].ToString();
 
-                        ////Captura de Valores en la Base de Datos
+                        //Captura de Valores en la Base de Datos
 
-                        //frm.SQL_Guardar = Datos.Rows[0][4].ToString();
-                        //frm.SQL_Editar = Datos.Rows[0][5].ToString();
-                        //frm.SQL_Eliminar = Datos.Rows[0][6].ToString();
-                        //frm.SQL_Consultar = Datos.Rows[0][7].ToString();
+                        frm.SQL_Guardar = Datos.Rows[0][4].ToString();
+                        frm.SQL_Editar = Datos.Rows[0][5].ToString();
+                        frm.SQL_Eliminar = Datos.Rows[0][6].ToString();
+                        frm.SQL_Consultar = Datos.Rows[0][7].ToString();
 
                         frm.Show();
                         this.Hide();
