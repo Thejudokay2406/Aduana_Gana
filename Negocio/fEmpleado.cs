@@ -30,7 +30,7 @@ namespace Negocio
                 int auto, int idarea,
 
                //Datos Basicos
-               string Codigo, string nombre, string apellidos, string direccion, string telefono, string salario, string jefe, string sexo, DateTime fecha, int personal
+               string Codigo, string nombre, string apellidos, string direccion, string telefono, string salario, string sexo, DateTime fecha, int personal
             )
         {
             Conexion_Empleados Datos = new Conexion_Empleados();
@@ -46,7 +46,6 @@ namespace Negocio
             Obj.Direccion = direccion;
             Obj.Telefono = telefono;
             Obj.Salario = salario;
-            Obj.Jefe = jefe;
             Obj.Sexo = sexo;
             Obj.Ingreso = fecha;
             Obj.Personal = personal;
@@ -61,7 +60,7 @@ namespace Negocio
                 int auto, int idempleado, int idarea,
 
                //Datos Basicos
-               string Codigo, string nombre, string apellidos, string direccion, string telefono, string salario, string jefe, string sexo, DateTime fecha, int personal
+               string Codigo, string nombre, string apellidos, string direccion, string telefono, string salario, string sexo, DateTime fecha, int personal
             )
         {
             Conexion_Empleados Datos = new Conexion_Empleados();
@@ -78,7 +77,6 @@ namespace Negocio
             Obj.Direccion = direccion;
             Obj.Telefono = telefono;
             Obj.Salario = salario;
-            Obj.Jefe = jefe;
             Obj.Sexo = sexo;
             Obj.Ingreso = fecha;
             Obj.Personal = personal;

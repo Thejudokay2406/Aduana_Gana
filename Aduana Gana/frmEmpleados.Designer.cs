@@ -30,7 +30,6 @@ namespace Aduana_Gana
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.btnGuardar = new System.Windows.Forms.Button();
             this.TBSalario = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.TBTelefono = new System.Windows.Forms.TextBox();
@@ -50,29 +49,30 @@ namespace Aduana_Gana
             this.DTFecha = new System.Windows.Forms.DateTimePicker();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.CBEmpleado = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnAgregar = new System.Windows.Forms.Button();
-            this.btnEliminar_Personal = new System.Windows.Forms.Button();
-            this.lblTotal = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.CHPersonal = new System.Windows.Forms.CheckBox();
-            this.CBJefe = new System.Windows.Forms.ComboBox();
-            this.label12 = new System.Windows.Forms.Label();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.TBIdempleado = new System.Windows.Forms.TextBox();
+            this.CHPersonal = new System.Windows.Forms.CheckBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnExaminar = new System.Windows.Forms.Button();
+            this.TBIdempleado02 = new System.Windows.Forms.TextBox();
+            this.TBEmpleado = new System.Windows.Forms.TextBox();
+            this.lblTotal = new System.Windows.Forms.Label();
+            this.btnEliminar_Personal = new System.Windows.Forms.Button();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.DGPersonal = new System.Windows.Forms.DataGridView();
+            this.label10 = new System.Windows.Forms.Label();
             this.DGResultados = new System.Windows.Forms.DataGridView();
             this.TBBuscar = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
+            this.btnEliminar = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGPersonal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGResultados)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -89,23 +89,6 @@ namespace Aduana_Gana
             this.label1.TabIndex = 0;
             this.label1.Text = "Nombre";
             // 
-            // btnGuardar
-            // 
-            this.btnGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGuardar.Image = global::Aduana_Gana.Properties.Resources.btnGuardar;
-            this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(10, 318);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(120, 30);
-            this.btnGuardar.TabIndex = 10;
-            this.btnGuardar.Text = "Guardar - F10";
-            this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGuardar.UseVisualStyleBackColor = true;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
             // TBSalario
             // 
             this.TBSalario.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -115,7 +98,9 @@ namespace Aduana_Gana
             this.TBSalario.Name = "TBSalario";
             this.TBSalario.Size = new System.Drawing.Size(377, 21);
             this.TBSalario.TabIndex = 9;
+            this.TBSalario.Enter += new System.EventHandler(this.TBSalario_Enter);
             this.TBSalario.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TBSalario_KeyUp);
+            this.TBSalario.Leave += new System.EventHandler(this.TBSalario_Leave);
             // 
             // label5
             // 
@@ -138,7 +123,9 @@ namespace Aduana_Gana
             this.TBTelefono.Name = "TBTelefono";
             this.TBTelefono.Size = new System.Drawing.Size(377, 21);
             this.TBTelefono.TabIndex = 7;
+            this.TBTelefono.Enter += new System.EventHandler(this.TBTelefono_Enter);
             this.TBTelefono.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TBTelefono_KeyUp);
+            this.TBTelefono.Leave += new System.EventHandler(this.TBTelefono_Leave);
             // 
             // label3
             // 
@@ -161,7 +148,9 @@ namespace Aduana_Gana
             this.TBDireccion.Name = "TBDireccion";
             this.TBDireccion.Size = new System.Drawing.Size(377, 21);
             this.TBDireccion.TabIndex = 5;
+            this.TBDireccion.Enter += new System.EventHandler(this.TBDireccion_Enter);
             this.TBDireccion.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TBDireccion_KeyUp);
+            this.TBDireccion.Leave += new System.EventHandler(this.TBDireccion_Leave);
             // 
             // label4
             // 
@@ -184,7 +173,9 @@ namespace Aduana_Gana
             this.TBApellidos.Name = "TBApellidos";
             this.TBApellidos.Size = new System.Drawing.Size(377, 21);
             this.TBApellidos.TabIndex = 3;
+            this.TBApellidos.Enter += new System.EventHandler(this.TBApellidos_Enter);
             this.TBApellidos.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TBApellidos_KeyUp);
+            this.TBApellidos.Leave += new System.EventHandler(this.TBApellidos_Leave);
             // 
             // label2
             // 
@@ -207,7 +198,9 @@ namespace Aduana_Gana
             this.TBNombre.Name = "TBNombre";
             this.TBNombre.Size = new System.Drawing.Size(377, 21);
             this.TBNombre.TabIndex = 1;
+            this.TBNombre.Enter += new System.EventHandler(this.TBNombre_Enter);
             this.TBNombre.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TBNombre_KeyUp);
+            this.TBNombre.Leave += new System.EventHandler(this.TBNombre_Leave);
             // 
             // label6
             // 
@@ -216,7 +209,7 @@ namespace Aduana_Gana
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
             this.label6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label6.Location = new System.Drawing.Point(7, 257);
+            this.label6.Location = new System.Drawing.Point(7, 171);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(32, 15);
             this.label6.TabIndex = 11;
@@ -229,9 +222,9 @@ namespace Aduana_Gana
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CBArea.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBArea.FormattingEnabled = true;
-            this.CBArea.Location = new System.Drawing.Point(72, 254);
+            this.CBArea.Location = new System.Drawing.Point(72, 168);
             this.CBArea.Name = "CBArea";
-            this.CBArea.Size = new System.Drawing.Size(185, 23);
+            this.CBArea.Size = new System.Drawing.Size(377, 23);
             this.CBArea.TabIndex = 12;
             // 
             // TBCodigo
@@ -243,7 +236,9 @@ namespace Aduana_Gana
             this.TBCodigo.Name = "TBCodigo";
             this.TBCodigo.Size = new System.Drawing.Size(377, 21);
             this.TBCodigo.TabIndex = 14;
+            this.TBCodigo.Enter += new System.EventHandler(this.TBCodigo_Enter);
             this.TBCodigo.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TBCodigo_KeyUp);
+            this.TBCodigo.Leave += new System.EventHandler(this.TBCodigo_Leave);
             // 
             // label7
             // 
@@ -268,7 +263,7 @@ namespace Aduana_Gana
             "-",
             "Masculino",
             "Femenino"});
-            this.CBSexo.Location = new System.Drawing.Point(85, 198);
+            this.CBSexo.Location = new System.Drawing.Point(72, 197);
             this.CBSexo.Name = "CBSexo";
             this.CBSexo.Size = new System.Drawing.Size(172, 23);
             this.CBSexo.TabIndex = 16;
@@ -280,7 +275,7 @@ namespace Aduana_Gana
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
             this.label8.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label8.Location = new System.Drawing.Point(7, 201);
+            this.label8.Location = new System.Drawing.Point(7, 200);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(35, 15);
             this.label8.TabIndex = 15;
@@ -293,7 +288,7 @@ namespace Aduana_Gana
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
             this.label9.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label9.Location = new System.Drawing.Point(7, 227);
+            this.label9.Location = new System.Drawing.Point(6, 227);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(102, 15);
             this.label9.TabIndex = 17;
@@ -304,7 +299,7 @@ namespace Aduana_Gana
             this.DTFecha.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.DTFecha.Location = new System.Drawing.Point(115, 227);
+            this.DTFecha.Location = new System.Drawing.Point(114, 227);
             this.DTFecha.Name = "DTFecha";
             this.DTFecha.Size = new System.Drawing.Size(256, 21);
             this.DTFecha.TabIndex = 18;
@@ -324,10 +319,8 @@ namespace Aduana_Gana
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.button3);
+            this.tabPage1.Controls.Add(this.btnCancelar);
             this.tabPage1.Controls.Add(this.TBIdempleado);
-            this.tabPage1.Controls.Add(this.CBJefe);
-            this.tabPage1.Controls.Add(this.label12);
             this.tabPage1.Controls.Add(this.CHPersonal);
             this.tabPage1.Controls.Add(this.label11);
             this.tabPage1.Controls.Add(this.DTFecha);
@@ -357,14 +350,86 @@ namespace Aduana_Gana
             this.tabPage1.Text = "Registro de Empleados";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancelar.Image = global::Aduana_Gana.Properties.Resources.btnCancelar;
+            this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCancelar.Location = new System.Drawing.Point(329, 314);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(120, 28);
+            this.btnCancelar.TabIndex = 24;
+            this.btnCancelar.Text = "Cancelar - F9";
+            this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // TBIdempleado
+            // 
+            this.TBIdempleado.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TBIdempleado.Location = new System.Drawing.Point(183, 254);
+            this.TBIdempleado.Name = "TBIdempleado";
+            this.TBIdempleado.Size = new System.Drawing.Size(100, 21);
+            this.TBIdempleado.TabIndex = 23;
+            this.TBIdempleado.TextChanged += new System.EventHandler(this.TBIdempleado_TextChanged);
+            // 
+            // CHPersonal
+            // 
+            this.CHPersonal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.CHPersonal.AutoSize = true;
+            this.CHPersonal.Location = new System.Drawing.Point(386, 199);
+            this.CHPersonal.Name = "CHPersonal";
+            this.CHPersonal.Size = new System.Drawing.Size(63, 19);
+            this.CHPersonal.TabIndex = 20;
+            this.CHPersonal.Text = "Si - No";
+            this.CHPersonal.UseVisualStyleBackColor = true;
+            // 
+            // label11
+            // 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(268, 200);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(102, 15);
+            this.label11.TabIndex = 19;
+            this.label11.Text = "Personal a Cargo";
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGuardar.Image = global::Aduana_Gana.Properties.Resources.btnGuardar;
+            this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGuardar.Location = new System.Drawing.Point(10, 314);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(120, 28);
+            this.btnGuardar.TabIndex = 10;
+            this.btnGuardar.Text = "Guardar - F10";
+            this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.btnExaminar);
+            this.tabPage2.Controls.Add(this.TBIdempleado02);
+            this.tabPage2.Controls.Add(this.TBEmpleado);
             this.tabPage2.Controls.Add(this.lblTotal);
             this.tabPage2.Controls.Add(this.btnEliminar_Personal);
             this.tabPage2.Controls.Add(this.btnAgregar);
-            this.tabPage2.Controls.Add(this.dataGridView1);
+            this.tabPage2.Controls.Add(this.DGPersonal);
             this.tabPage2.Controls.Add(this.label10);
-            this.tabPage2.Controls.Add(this.CBEmpleado);
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -373,35 +438,59 @@ namespace Aduana_Gana
             this.tabPage2.Text = "Personal a Cargo";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // CBEmpleado
+            // btnExaminar
             // 
-            this.CBEmpleado.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.CBEmpleado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CBEmpleado.FormattingEnabled = true;
-            this.CBEmpleado.Location = new System.Drawing.Point(130, 6);
-            this.CBEmpleado.Name = "CBEmpleado";
-            this.CBEmpleado.Size = new System.Drawing.Size(319, 23);
-            this.CBEmpleado.TabIndex = 0;
+            this.btnExaminar.BackColor = System.Drawing.Color.White;
+            this.btnExaminar.BackgroundImage = global::Aduana_Gana.Properties.Resources.btnExaminar;
+            this.btnExaminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnExaminar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExaminar.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnExaminar.FlatAppearance.BorderSize = 0;
+            this.btnExaminar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnExaminar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btnExaminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExaminar.Location = new System.Drawing.Point(416, 6);
+            this.btnExaminar.Name = "btnExaminar";
+            this.btnExaminar.Size = new System.Drawing.Size(33, 21);
+            this.btnExaminar.TabIndex = 8;
+            this.btnExaminar.UseVisualStyleBackColor = false;
+            this.btnExaminar.Click += new System.EventHandler(this.btnExaminar_Click);
             // 
-            // label10
+            // TBIdempleado02
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 9);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(118, 15);
-            this.label10.TabIndex = 1;
-            this.label10.Text = "Empleado Asignado";
+            this.TBIdempleado02.Location = new System.Drawing.Point(133, 323);
+            this.TBIdempleado02.Name = "TBIdempleado02";
+            this.TBIdempleado02.Size = new System.Drawing.Size(48, 21);
+            this.TBIdempleado02.TabIndex = 7;
             // 
-            // dataGridView1
+            // TBEmpleado
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(9, 35);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(440, 277);
-            this.dataGridView1.TabIndex = 2;
+            this.TBEmpleado.Location = new System.Drawing.Point(130, 6);
+            this.TBEmpleado.Name = "TBEmpleado";
+            this.TBEmpleado.Size = new System.Drawing.Size(280, 21);
+            this.TBEmpleado.TabIndex = 6;
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Location = new System.Drawing.Point(6, 326);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(121, 15);
+            this.lblTotal.TabIndex = 5;
+            this.lblTotal.Text = "Datos Registrados: 0";
+            // 
+            // btnEliminar_Personal
+            // 
+            this.btnEliminar_Personal.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEliminar_Personal.Image = global::Aduana_Gana.Properties.Resources.btnEliminar;
+            this.btnEliminar_Personal.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEliminar_Personal.Location = new System.Drawing.Point(329, 318);
+            this.btnEliminar_Personal.Name = "btnEliminar_Personal";
+            this.btnEliminar_Personal.Size = new System.Drawing.Size(120, 30);
+            this.btnEliminar_Personal.TabIndex = 4;
+            this.btnEliminar_Personal.Text = "Eliminar - F4";
+            this.btnEliminar_Personal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEliminar_Personal.UseVisualStyleBackColor = true;
             // 
             // btnAgregar
             // 
@@ -416,92 +505,28 @@ namespace Aduana_Gana
             this.btnAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAgregar.UseVisualStyleBackColor = true;
             // 
-            // btnEliminar_Personal
+            // DGPersonal
             // 
-            this.btnEliminar_Personal.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEliminar_Personal.Image = global::Aduana_Gana.Properties.Resources.btnEliminar;
-            this.btnEliminar_Personal.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEliminar_Personal.Location = new System.Drawing.Point(329, 318);
-            this.btnEliminar_Personal.Name = "btnEliminar_Personal";
-            this.btnEliminar_Personal.Size = new System.Drawing.Size(120, 30);
-            this.btnEliminar_Personal.TabIndex = 4;
-            this.btnEliminar_Personal.Text = "Eliminar";
-            this.btnEliminar_Personal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEliminar_Personal.UseVisualStyleBackColor = true;
+            this.DGPersonal.AllowUserToAddRows = false;
+            this.DGPersonal.AllowUserToDeleteRows = false;
+            this.DGPersonal.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.DGPersonal.BackgroundColor = System.Drawing.Color.White;
+            this.DGPersonal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGPersonal.Location = new System.Drawing.Point(9, 35);
+            this.DGPersonal.Name = "DGPersonal";
+            this.DGPersonal.ReadOnly = true;
+            this.DGPersonal.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DGPersonal.Size = new System.Drawing.Size(440, 277);
+            this.DGPersonal.TabIndex = 2;
             // 
-            // lblTotal
+            // label10
             // 
-            this.lblTotal.AutoSize = true;
-            this.lblTotal.Location = new System.Drawing.Point(6, 326);
-            this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(121, 15);
-            this.lblTotal.TabIndex = 5;
-            this.lblTotal.Text = "Datos Registrados: 0";
-            // 
-            // label11
-            // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 284);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(102, 15);
-            this.label11.TabIndex = 19;
-            this.label11.Text = "Personal a Cargo";
-            // 
-            // CHPersonal
-            // 
-            this.CHPersonal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.CHPersonal.AutoSize = true;
-            this.CHPersonal.Location = new System.Drawing.Point(114, 283);
-            this.CHPersonal.Name = "CHPersonal";
-            this.CHPersonal.Size = new System.Drawing.Size(63, 19);
-            this.CHPersonal.TabIndex = 20;
-            this.CHPersonal.Text = "Si - No";
-            this.CHPersonal.UseVisualStyleBackColor = true;
-            // 
-            // CBJefe
-            // 
-            this.CBJefe.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.CBJefe.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CBJefe.FormattingEnabled = true;
-            this.CBJefe.Items.AddRange(new object[] {
-            "-",
-            "Masculino",
-            "Femenino"});
-            this.CBJefe.Location = new System.Drawing.Point(85, 168);
-            this.CBJefe.Name = "CBJefe";
-            this.CBJefe.Size = new System.Drawing.Size(364, 23);
-            this.CBJefe.TabIndex = 22;
-            // 
-            // label12
-            // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label12.AutoSize = true;
-            this.label12.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label12.Location = new System.Drawing.Point(7, 171);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(72, 15);
-            this.label12.TabIndex = 21;
-            this.label12.Text = "Jefe Directo";
-            // 
-            // TBIdempleado
-            // 
-            this.TBIdempleado.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.TBIdempleado.Location = new System.Drawing.Point(183, 283);
-            this.TBIdempleado.Name = "TBIdempleado";
-            this.TBIdempleado.Size = new System.Drawing.Size(100, 21);
-            this.TBIdempleado.TabIndex = 23;
-            this.TBIdempleado.TextChanged += new System.EventHandler(this.TBIdempleado_TextChanged);
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(6, 9);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(118, 15);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "Empleado Asignado";
             // 
             // DGResultados
             // 
@@ -510,10 +535,13 @@ namespace Aduana_Gana
             this.DGResultados.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.DGResultados.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.DGResultados.BackgroundColor = System.Drawing.Color.White;
             this.DGResultados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGResultados.Location = new System.Drawing.Point(6, 48);
             this.DGResultados.Name = "DGResultados";
             this.DGResultados.ReadOnly = true;
+            this.DGResultados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGResultados.Size = new System.Drawing.Size(437, 284);
             this.DGResultados.TabIndex = 0;
             // 
@@ -527,6 +555,8 @@ namespace Aduana_Gana
             this.TBBuscar.Size = new System.Drawing.Size(302, 21);
             this.TBBuscar.TabIndex = 1;
             this.TBBuscar.TextChanged += new System.EventHandler(this.TBBuscar_TextChanged);
+            this.TBBuscar.Enter += new System.EventHandler(this.TBBuscar_Enter);
+            this.TBBuscar.Leave += new System.EventHandler(this.TBBuscar_Leave);
             // 
             // label13
             // 
@@ -557,21 +587,17 @@ namespace Aduana_Gana
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Consulta de Empleados Registrados - Adruana Gama";
             // 
-            // button3
+            // label14
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.Image = global::Aduana_Gana.Properties.Resources.btnCancelar;
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(329, 318);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(120, 30);
-            this.button3.TabIndex = 24;
-            this.button3.Text = "Cancelar - F9";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button3.UseVisualStyleBackColor = true;
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(6, 346);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(121, 15);
+            this.label14.TabIndex = 4;
+            this.label14.Text = "Datos Registrados: 0";
             // 
             // btnEliminar
             // 
@@ -589,18 +615,6 @@ namespace Aduana_Gana
             this.btnEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEliminar.UseVisualStyleBackColor = true;
             // 
-            // label14
-            // 
-            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(6, 346);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(121, 15);
-            this.label14.TabIndex = 4;
-            this.label14.Text = "Datos Registrados: 0";
-            // 
             // frmEmpleados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -610,7 +624,9 @@ namespace Aduana_Gana
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tabControl1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MaximizeBox = false;
             this.Name = "frmEmpleados";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmAduana";
             this.Load += new System.EventHandler(this.frmEmpleados_Load);
             this.tabControl1.ResumeLayout(false);
@@ -618,7 +634,7 @@ namespace Aduana_Gana
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGPersonal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGResultados)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -652,21 +668,21 @@ namespace Aduana_Gana
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button btnEliminar_Personal;
         private System.Windows.Forms.Button btnAgregar;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView DGPersonal;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ComboBox CBEmpleado;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.CheckBox CHPersonal;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox CBJefe;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox TBIdempleado;
         private System.Windows.Forms.DataGridView DGResultados;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox TBBuscar;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox TBEmpleado;
+        private System.Windows.Forms.TextBox TBIdempleado02;
+        private System.Windows.Forms.Button btnExaminar;
     }
 }

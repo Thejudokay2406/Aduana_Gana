@@ -73,6 +73,12 @@
     <Compile Include="frmEmpleados.Designer.cs">
       <DependentUpon>frmEmpleados.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmFiltro_Empleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFiltro_Empleado.Designer.cs">
+      <DependentUpon>frmFiltro_Empleado.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,6 +160,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\btnGuardar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnExaminar.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

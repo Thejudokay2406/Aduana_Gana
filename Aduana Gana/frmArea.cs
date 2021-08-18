@@ -37,6 +37,8 @@ namespace Aduana_Gana
 
             this.TBIdarea.Visible = false;
             this.TBCodigo.Focus();
+
+            //this.CBJefe.SelectedIndex = 0;
         }
 
         private void Habilitar()
@@ -59,6 +61,7 @@ namespace Aduana_Gana
             this.TBArea.Clear();
             this.TBDescripcion.Clear();
             this.TBBuscar.Clear();
+            this.CBJefe.SelectedIndex = 0;
 
             this.TBCodigo.Focus();
         }
@@ -80,6 +83,20 @@ namespace Aduana_Gana
 
                 this.btnEliminar.Enabled = true;
                 this.btnCancelar.Enabled = true;
+            }
+        }
+
+        private void Combobox_General()
+        {
+            try
+            {
+                this.CBJefe.DataSource = fEmpleado.Lista(3);
+                this.CBJefe.ValueMember = "Código";
+                this.CBJefe.DisplayMember = "Empleado";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
             }
         }
 
@@ -623,6 +640,11 @@ namespace Aduana_Gana
         {
             //Color de texboxt cuando este posee el FOCUS Activado
             this.TBBuscar.BackColor = Color.FromArgb(3, 155, 229);
+        }
+
+        private void TBCodigo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
         }
 
         private void TBCodigo_Leave(object sender, EventArgs e)

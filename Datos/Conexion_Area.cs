@@ -20,7 +20,7 @@ namespace Datos
             try
             {
                 SqlCon = Conexion_SQLServer.getInstancia().Conexion();
-                SqlCommand Comando = new SqlCommand("Area.GA_Area", SqlCon);
+                SqlCommand Comando = new SqlCommand("Gama.GA_Area", SqlCon);
                 Comando.CommandType = CommandType.StoredProcedure;
 
                 Comando.Parameters.Add("@Consulta", SqlDbType.Int).Value = Auto;

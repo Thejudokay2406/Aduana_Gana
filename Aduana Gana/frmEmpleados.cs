@@ -36,17 +36,15 @@ namespace Aduana_Gana
         {
             //
             this.Combobox_General();
-
-            this.CBArea.SelectedIndex = 0;
-            this.CBSexo.SelectedIndex = 0;
-            this.CBJefe.SelectedIndex = 0;
-
+            this.Habilitar();
+            this.Botones();
 
             this.TBCodigo.Text = Campo;
             this.TBNombre.Text = Campo;
             this.TBApellidos.Text = Campo;
 
-            this.Botones();
+            this.CBArea.SelectedIndex = 0;
+            this.CBSexo.SelectedIndex = 0;
         }
 
         public frmEmpleados()
@@ -54,6 +52,24 @@ namespace Aduana_Gana
             InitializeComponent();
         }
 
+        private void Habilitar()
+        {
+            this.TBCodigo.ForeColor = Color.FromArgb(255, 255, 255);
+            this.TBCodigo.BackColor = Color.FromArgb(3, 155, 229);
+            this.TBCodigo.Text = Campo;
+            this.TBNombre.BackColor = Color.FromArgb(3, 155, 229);
+            this.TBNombre.ForeColor = Color.FromArgb(255, 255, 255);
+            this.TBNombre.Text = Campo;
+            this.TBApellidos.BackColor = Color.FromArgb(3, 155, 229);
+            this.TBApellidos.ForeColor = Color.FromArgb(255, 255, 255);
+            this.TBApellidos.Text = Campo;
+            this.TBDireccion.BackColor = Color.FromArgb(3, 155, 229);
+            this.TBTelefono.BackColor = Color.FromArgb(3, 155, 229);
+            this.TBSalario.BackColor = Color.FromArgb(3, 155, 229);
+
+            //
+            this.TBBuscar.BackColor = Color.FromArgb(3, 155, 229);
+        }
 
         private void Limpiar_Datos()
         {
@@ -67,7 +83,7 @@ namespace Aduana_Gana
             this.TBSalario.Text = Campo;
             this.CBArea.SelectedIndex = 0;
             this.CBSexo.SelectedIndex = 0;
-            this.CBJefe.SelectedIndex = 0;
+            this.CHPersonal.Checked = false;
 
             //Se realiza el FOCUS al panel y campo de texto iniciales
             this.TBCodigo.Select();
@@ -78,7 +94,18 @@ namespace Aduana_Gana
             if (Digitar)
             {
                 this.btnGuardar.Enabled = true;
-                this.btnGuardar.Text = "Guardar";
+                this.btnGuardar.Text = "Guardar - F10";
+
+                this.btnEliminar.Enabled = false;
+                this.btnCancelar.Enabled = false;
+            }
+            else if (!Digitar)
+            {
+                this.btnGuardar.Enabled = true;
+                this.btnGuardar.Text = "Editar - F10";
+
+                this.btnEliminar.Enabled = true;
+                this.btnCancelar.Enabled = true;
             }
         }
 
@@ -86,12 +113,8 @@ namespace Aduana_Gana
         {
             try
             {
-                this.CBEmpleado.DataSource = fEmpleado.Lista(3);
-                this.CBEmpleado.ValueMember = "Código";
-                this.CBEmpleado.DisplayMember = "Empleado";
-
                 this.CBArea.DataSource = fArea.Lista(3);
-                this.CBArea.ValueMember = "Codigo";
+                this.CBArea.ValueMember = "Código";
                 this.CBArea.DisplayMember = "Área";
             }
             catch (Exception ex)
@@ -150,6 +173,9 @@ namespace Aduana_Gana
                 else
                 {
 
+                    //
+                    this.Validacion();
+
                     if (this.Digitar)
                     {
                         rptaDatosBasicos = fEmpleado.Guardar_DatosBasicos
@@ -158,7 +184,7 @@ namespace Aduana_Gana
                                 1,
 
                                 //Panel Datos Basicos
-                                Convert.ToInt32(this.CBArea.SelectedValue), this.TBCodigo.Text, this.TBNombre.Text, this.TBApellidos.Text, this.TBDireccion.Text, this.TBTelefono.Text, this.TBSalario.Text, this.CBJefe.Text, this.CBSexo.Text, this.DTFecha.Value, Convert.ToInt32(Personal_Cargo)
+                                Convert.ToInt32(this.CBArea.SelectedValue), this.TBCodigo.Text, this.TBNombre.Text, this.TBApellidos.Text, this.TBDireccion.Text, this.TBTelefono.Text, this.TBSalario.Text, this.CBSexo.Text, this.DTFecha.Value, Convert.ToInt32(Personal_Cargo)
                             );
                     }
 
@@ -167,10 +193,10 @@ namespace Aduana_Gana
                         rptaDatosBasicos = fEmpleado.Editar_DatosBasicos
                             (
                                 //Datos Auxiliares
-                                1,Convert.ToInt32(this.TBIdempleado.Text),
+                                2, Convert.ToInt32(this.TBIdempleado.Text),
 
                                 //Panel Datos Basicos
-                                Convert.ToInt32(this.CBArea.SelectedValue), this.TBCodigo.Text, this.TBNombre.Text, this.TBApellidos.Text, this.TBDireccion.Text, this.TBTelefono.Text, this.TBSalario.Text, this.CBJefe.Text, this.CBSexo.Text, this.DTFecha.Value, Convert.ToInt32(Personal_Cargo)
+                                Convert.ToInt32(this.CBArea.SelectedValue), this.TBCodigo.Text, this.TBNombre.Text, this.TBApellidos.Text, this.TBDireccion.Text, this.TBTelefono.Text, this.TBSalario.Text, this.CBSexo.Text, this.DTFecha.Value, Convert.ToInt32(Personal_Cargo)
                             );
                     }
 
@@ -202,7 +228,6 @@ namespace Aduana_Gana
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
         }
-
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
@@ -254,6 +279,155 @@ namespace Aduana_Gana
             }
         }
 
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TBCodigo_Enter(object sender, EventArgs e)
+        {
+            //Se evalua si el campo de texto esta vacio y se espeicifca que es obligatorio en la base de datos
+            if (TBCodigo.Text == Campo)
+            {
+                this.TBCodigo.BackColor = Color.Azure;
+                this.TBCodigo.ForeColor = Color.FromArgb(0, 0, 0);
+                this.TBCodigo.Clear();
+            }
+            else
+            {
+                //Color de fondo del Texboxt cuando este tiene el FOCUS Activado
+                this.TBCodigo.BackColor = Color.Azure;
+                this.TBCodigo.ForeColor = Color.FromArgb(0, 0, 0);
+            }
+        }
+
+        private void TBNombre_Enter(object sender, EventArgs e)
+        {
+            //Se evalua si el campo de texto esta vacio y se espeicifca que es obligatorio en la base de datos
+            if (TBNombre.Text == Campo)
+            {
+                this.TBNombre.BackColor = Color.Azure;
+                this.TBNombre.ForeColor = Color.FromArgb(0, 0, 0);
+                this.TBNombre.Clear();
+            }
+            else
+            {
+                //Color de fondo del Texboxt cuando este tiene el FOCUS Activado
+                this.TBNombre.BackColor = Color.Azure;
+                this.TBNombre.ForeColor = Color.FromArgb(0, 0, 0);
+            }
+        }
+
+        private void TBApellidos_Enter(object sender, EventArgs e)
+        {
+            //Se evalua si el campo de texto esta vacio y se espeicifca que es obligatorio en la base de datos
+            if (TBApellidos.Text == Campo)
+            {
+                this.TBApellidos.BackColor = Color.Azure;
+                this.TBApellidos.ForeColor = Color.FromArgb(0, 0, 0);
+                this.TBApellidos.Clear();
+            }
+            else
+            {
+                //Color de fondo del Texboxt cuando este tiene el FOCUS Activado
+                this.TBApellidos.BackColor = Color.Azure;
+                this.TBApellidos.ForeColor = Color.FromArgb(0, 0, 0);
+            }
+        }
+
+        private void TBDireccion_Enter(object sender, EventArgs e)
+        {
+            //Color de fondo del Texboxt cuando este tiene el FOCUS Activado
+            this.TBDireccion.BackColor = Color.Azure;
+        }
+
+        private void TBTelefono_Enter(object sender, EventArgs e)
+        {
+            //Color de fondo del Texboxt cuando este tiene el FOCUS Activado
+            this.TBTelefono.BackColor = Color.Azure;
+        }
+
+        private void TBSalario_Enter(object sender, EventArgs e)
+        {
+            //Color de fondo del Texboxt cuando este tiene el FOCUS Activado
+            this.TBSalario.BackColor = Color.Azure;
+        }
+
+        private void TBBuscar_Enter(object sender, EventArgs e)
+        {
+            //Color de fondo del Texboxt cuando este tiene el FOCUS Activado
+            this.TBBuscar.BackColor = Color.Azure;
+        }
+
+        private void TBCodigo_Leave(object sender, EventArgs e)
+        {
+            if (TBCodigo.Text == string.Empty)
+            {
+                //Color de texboxt cuando este posee el FOCUS Activado
+                this.TBCodigo.BackColor = Color.FromArgb(3, 155, 229);
+                this.TBCodigo.Text = Campo;
+                this.TBCodigo.ForeColor = Color.FromArgb(255, 255, 255);
+            }
+            else
+            {
+                this.TBCodigo.BackColor = Color.FromArgb(3, 155, 229);
+            }
+        }
+
+        private void TBNombre_Leave(object sender, EventArgs e)
+        {
+            if (TBNombre.Text == string.Empty)
+            {
+                //Color de texboxt cuando este posee el FOCUS Activado
+                this.TBNombre.BackColor = Color.FromArgb(3, 155, 229);
+                this.TBNombre.Text = Campo;
+                this.TBNombre.ForeColor = Color.FromArgb(255, 255, 255);
+            }
+            else
+            {
+                this.TBNombre.BackColor = Color.FromArgb(3, 155, 229);
+            }
+        }
+
+        private void TBApellidos_Leave(object sender, EventArgs e)
+        {
+            if (TBApellidos.Text == string.Empty)
+            {
+                //Color de texboxt cuando este posee el FOCUS Activado
+                this.TBApellidos.BackColor = Color.FromArgb(3, 155, 229);
+                this.TBApellidos.Text = Campo;
+                this.TBApellidos.ForeColor = Color.FromArgb(255, 255, 255);
+            }
+            else
+            {
+                this.TBApellidos.BackColor = Color.FromArgb(3, 155, 229);
+            }
+        }
+
+        private void TBDireccion_Leave(object sender, EventArgs e)
+        {
+            this.TBDireccion.BackColor = Color.FromArgb(3, 155, 229);
+        }
+
+        private void TBTelefono_Leave(object sender, EventArgs e)
+        {
+            this.TBTelefono.BackColor = Color.FromArgb(3, 155, 229);
+        }
+
+        private void TBSalario_Leave(object sender, EventArgs e)
+        {
+            this.TBSalario.BackColor = Color.FromArgb(3, 155, 229);
+        }
+
+        private void TBBuscar_Leave(object sender, EventArgs e)
+        {
+            this.TBBuscar.BackColor = Color.FromArgb(3, 155, 229);
+        }
+
+        private void btnExaminar_Click(object sender, EventArgs e)
+        {
+
+        }
 
         private void TBCodigo_KeyUp(object sender, KeyEventArgs e)
         {

@@ -103,6 +103,16 @@ namespace Aduana_Gana.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap btnExaminar {
+            get {
+                object obj = ResourceManager.GetObject("btnExaminar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap btnGuardar {
             get {
                 object obj = ResourceManager.GetObject("btnGuardar", resourceCulture);

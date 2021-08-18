@@ -52,5 +52,17 @@ namespace Aduana_Gana
         {
             Application.Exit();
         }
+
+        private void empleadoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmEmpleados frmEmpleados = new frmEmpleados();
+            frmEmpleados.MdiParent = this;
+            frmEmpleados.Show(); ;
+
+            frmEmpleados.Guardar = Convert.ToString(this.SQL_Guardar);
+            frmEmpleados.Editar = Convert.ToString(this.SQL_Editar);
+            frmEmpleados.Eliminar = Convert.ToString(this.SQL_Eliminar);
+            frmEmpleados.Consultar = Convert.ToString(this.SQL_Consultar);
+        }
     }
 }

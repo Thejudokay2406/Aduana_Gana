@@ -98,7 +98,6 @@ namespace Datos
                 Comando.Parameters.Add("@Telefono", SqlDbType.VarChar).Value = Obj.Telefono;
                 Comando.Parameters.Add("@Salario", SqlDbType.VarChar).Value = Obj.Salario;
 
-                Comando.Parameters.Add("@Jefe", SqlDbType.VarChar).Value = Obj.Jefe;
                 Comando.Parameters.Add("@Sexo", SqlDbType.VarChar).Value = Obj.Sexo;
                 Comando.Parameters.Add("@Ingreso", SqlDbType.DateTime).Value = Obj.Ingreso;
                 Comando.Parameters.Add("@Personal", SqlDbType.Int).Value = Obj.Personal;
@@ -144,7 +143,6 @@ namespace Datos
                 Comando.Parameters.Add("@Telefono", SqlDbType.VarChar).Value = Obj.Telefono;
                 Comando.Parameters.Add("@Salario", SqlDbType.VarChar).Value = Obj.Salario;
 
-                Comando.Parameters.Add("@Jefe", SqlDbType.VarChar).Value = Obj.Jefe;
                 Comando.Parameters.Add("@Sexo", SqlDbType.VarChar).Value = Obj.Sexo;
                 Comando.Parameters.Add("@Ingreso", SqlDbType.DateTime).Value = Obj.Ingreso;
                 Comando.Parameters.Add("@Personal", SqlDbType.Int).Value = Obj.Personal;

@@ -37,6 +37,7 @@ namespace Aduana_Gana
             this.TBCodigo = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.TBIdarea = new System.Windows.Forms.TextBox();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -44,7 +45,8 @@ namespace Aduana_Gana
             this.TBBuscar = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.DGResultados = new System.Windows.Forms.DataGridView();
-            this.TBIdarea = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.CBJefe = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGResultados)).BeginInit();
@@ -108,7 +110,7 @@ namespace Aduana_Gana
             this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnGuardar.Image = global::Aduana_Gana.Properties.Resources.btnGuardar;
             this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(9, 137);
+            this.btnGuardar.Location = new System.Drawing.Point(6, 145);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(120, 30);
             this.btnGuardar.TabIndex = 23;
@@ -147,6 +149,8 @@ namespace Aduana_Gana
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.CBJefe);
+            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.TBIdarea);
             this.groupBox1.Controls.Add(this.btnEliminar);
             this.groupBox1.Controls.Add(this.btnCancelar);
@@ -164,6 +168,14 @@ namespace Aduana_Gana
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Aduana Gama - Registro de Áreas Administrativas";
             // 
+            // TBIdarea
+            // 
+            this.TBIdarea.Location = new System.Drawing.Point(287, 150);
+            this.TBIdarea.Name = "TBIdarea";
+            this.TBIdarea.Size = new System.Drawing.Size(23, 21);
+            this.TBIdarea.TabIndex = 35;
+            this.TBIdarea.TextChanged += new System.EventHandler(this.TBIdarea_TextChanged);
+            // 
             // btnEliminar
             // 
             this.btnEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -172,7 +184,7 @@ namespace Aduana_Gana
             this.btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEliminar.Image = global::Aduana_Gana.Properties.Resources.btnEliminar;
             this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEliminar.Location = new System.Drawing.Point(163, 137);
+            this.btnEliminar.Location = new System.Drawing.Point(161, 145);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(120, 30);
             this.btnEliminar.TabIndex = 34;
@@ -189,7 +201,7 @@ namespace Aduana_Gana
             this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancelar.Image = global::Aduana_Gana.Properties.Resources.btnCancelar;
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancelar.Location = new System.Drawing.Point(316, 137);
+            this.btnCancelar.Location = new System.Drawing.Point(313, 145);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(120, 30);
             this.btnCancelar.TabIndex = 33;
@@ -271,13 +283,27 @@ namespace Aduana_Gana
             this.DGResultados.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGResultados_CellDoubleClick);
             this.DGResultados.KeyUp += new System.Windows.Forms.KeyEventHandler(this.DGResultados_KeyUp);
             // 
-            // TBIdarea
+            // label2
             // 
-            this.TBIdarea.Location = new System.Drawing.Point(86, 101);
-            this.TBIdarea.Name = "TBIdarea";
-            this.TBIdarea.Size = new System.Drawing.Size(100, 21);
-            this.TBIdarea.TabIndex = 35;
-            this.TBIdarea.TextChanged += new System.EventHandler(this.TBIdarea_TextChanged);
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(5, 104);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(50, 15);
+            this.label2.TabIndex = 36;
+            this.label2.Text = "Director";
+            // 
+            // CBJefe
+            // 
+            this.CBJefe.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.CBJefe.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBJefe.FormattingEnabled = true;
+            this.CBJefe.Location = new System.Drawing.Point(86, 101);
+            this.CBJefe.Name = "CBJefe";
+            this.CBJefe.Size = new System.Drawing.Size(347, 23);
+            this.CBJefe.TabIndex = 37;
             // 
             // frmArea
             // 
@@ -321,5 +347,7 @@ namespace Aduana_Gana
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.TextBox TBIdarea;
+        private System.Windows.Forms.ComboBox CBJefe;
+        private System.Windows.Forms.Label label2;
     }
 }
